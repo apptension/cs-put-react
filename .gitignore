@@ -1,0 +1,11 @@
+.idea
+.tmp
+.vagrant
+
+coverage
+node_modules
+bower_components
+dist
+dist.zip
+app/src/generated/_sprites.scss
+app/images/generated

@@ -1,2 +1,2 @@
-# cs-put-react
-Repository for CS PUT React course
+Universal React for IEASTE CaseWeek workshop
+---
