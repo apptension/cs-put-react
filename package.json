@@ -1,5 +1,5 @@
 {
-  "name": "cs-put-react",
+  "name": "cs-put-lectures",
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
@@ -17,18 +17,37 @@
   "author": "Apptension",
   "license": "UNLICENSED",
   "devDependencies": {
-    "apptension-tools": "^5.0.15",
+    "apptension-tools": "^5.0.10",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.5.0",
     "eslint-config-apptension": "^1.0.2",
+    "eslint-plugin-react": "^4.2.3",
     "exports-loader": "^0.6.2",
     "gulp": "^3.9.1",
     "gulp-watch": "^4.3.5",
     "run-sequence": "^1.1.3"
   },
   "dependencies": {
+    "apptension-tools": "^5.0.15",
     "babel-polyfill": "^6.7.4",
     "bootstrap-material-design": "^4.0.1",
-    "lodash": "^4.2.1 "
+    "bourbon": "^4.2.5",
+    "firebase": "^2.4.2",
+    "humps": "^1.0.0",
+    "isomorphic-fetch": "^2.2.1",
+    "lodash": "^4.2.1 ",
+    "moment": "^2.12.0",
+    "node-neat": "^1.7.2",
+    "normalizr": "^2.0.1",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-router": "^2.0.1",
+    "react-router-redux": "^4.0.1",
+    "redux": "^3.3.1",
+    "redux-devtools": "^3.2.0",
+    "redux-devtools-dock-monitor": "^1.1.1",
+    "redux-devtools-log-monitor": "^1.0.9",
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.0.1"
   }
 }
