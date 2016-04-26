@@ -5,8 +5,10 @@ import './main.scss';
 import React from 'react';
 import ReactDom from 'react-dom';
 
-import App from './src/components/app';
+import App from './src/components/App/App';
 
+
+window.React = React;
 
 const reactRoot = document.getElementById('react-root');
 ReactDom.render(<App/>, reactRoot);

@@ -1,0 +1,32 @@
+.app {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.appContainer {
+  padding-top: 20px;
+  flex: 1;
+  width: 100%;
+}
+
+.characterList {
+}
+
+.characterListSearch {
+  margin-bottom: 20px;
+}
+
+.characterListItem {
+  padding: 0 20px;
+}
+
+.characterListItem:nth-child(3n + 1) {
+  padding-left: 15px;
+}
+
+.characterListItem:nth-child(3n) {
+  padding-right: 15px;
+}

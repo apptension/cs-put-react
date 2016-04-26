@@ -1,6 +1,10 @@
 import React from 'react';
 
-import data from '../mock/people.json';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import api from '../../services/api';
+
+import data from '../../mock/people.json';
 
 
 export default class App extends React.Component {
@@ -25,13 +29,27 @@ export default class App extends React.Component {
     ));
   }
 
+  renderList() {
+    return <ul>{this.renderListItems()}</ul>;
+  }
+
   render() {
     return (
-      <div>
-        <input onChange={this.updateQuery.bind(this)}/>
-        <ul>
-          {this.renderListItems()}
-        </ul>
+      <div className="app">
+        <Header/>
+        <div className="appContainer container">
+          <div className="characterList">
+            <div className="row form-group">
+              <input type="text" className="form-control" onChange={this.updateQuery.bind(this)}
+                     placeholder="Search"/>
+            </div>
+
+            <div className="row">
+              {this.renderList()}
+            </div>
+          </div>
+        </div>
+        <Footer/>
       </div>
     );
   }
