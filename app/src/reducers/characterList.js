@@ -1,8 +1,9 @@
 import {CHARACTERS_LIST_REQUEST, CHARACTERS_LIST_SUCCESS, CHARACTERS_LIST_SEARCH} from '../actions';
 
 const initialState = {
-  items: [],
   isLoading: false,
+  filteredItems: [],
+  allItems: [],
   searchText: ''
 };
 
