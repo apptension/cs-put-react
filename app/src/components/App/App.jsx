@@ -2,17 +2,23 @@ import React from 'react';
 
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import CharacterCard from '../CharacterCard/CharacterCard';
 import api from '../../services/api';
-
-import data from '../../mock/people.json';
 
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: ''
+      query: '',
+      characterList: []
     };
+  }
+
+  componentWillMount() {
+    api.getCharacterList().then((characterList) => {
+      this.setState({characterList})
+    });
   }
 
   renderListItems() {
@@ -30,7 +36,14 @@ export default class App extends React.Component {
   }
 
   renderList() {
-    return <ul>{this.renderListItems()}</ul>;
+    const matches = (item, query) => {
+      const containsQuery = item.name.replace(/\s+/g, '').toLowerCase().indexOf(query.replace(/\s+/g, '').toLowerCase()) >= 0;
+      return query.length === 0 || containsQuery;
+    };
+
+    return this.state.characterList
+      .filter((character) => matches(character, this.state.query))
+      .map((character, index) => <CharacterCard character={character} key={index}/>);
   }
 
   render() {

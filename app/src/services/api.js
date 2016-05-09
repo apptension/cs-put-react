@@ -24,7 +24,9 @@ class ApiService {
 
   getCharacterList() {
     const characterListUrl = this.buildUrl('characters?limit=100');
-
+    return fetch(characterListUrl)
+      .then((res) => res.json())
+      .then((json) => json.data.results)
   }
 }
 
