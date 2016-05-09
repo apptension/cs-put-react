@@ -1,49 +1,25 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import CharacterCard from '../CharacterCard/CharacterCard';
-import api from '../../services/api';
+import {
+  fetchCharacterList,
+  searchCharacterList
+} from '../../actions';
 
-
-export default class App extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      query: '',
-      characterList: []
-    };
   }
 
   componentWillMount() {
-    api.getCharacterList().then((characterList) => {
-      this.setState({characterList})
-    });
-  }
-
-  renderListItems() {
-    const matches = (item, query) => {
-      const dataString = item.firstName + item.lastName + item.email;
-      const containsQuery = dataString.replace(/\s+/g, '').toLowerCase().indexOf(query.replace(/\s+/g, '').toLowerCase()) >= 0;
-      return query.length === 0 || containsQuery;
-    };
-
-    return data.filter((item) => matches(item, this.state.query)).map((item, index) => (
-      <li key={index}>
-        {item.firstName} {item.lastName} {`<${item.email}>`}
-      </li>
-    ));
+    this.props.fetchCharacterList();
   }
 
   renderList() {
-    const matches = (item, query) => {
-      const containsQuery = item.name.replace(/\s+/g, '').toLowerCase().indexOf(query.replace(/\s+/g, '').toLowerCase()) >= 0;
-      return query.length === 0 || containsQuery;
-    };
-
-    return this.state.characterList
-      .filter((character) => matches(character, this.state.query))
-      .map((character, index) => <CharacterCard character={character} key={index}/>);
+    return this.props.characterList.map((character, index) => <CharacterCard character={character} key={index}/>);
   }
 
   render() {
@@ -53,7 +29,7 @@ export default class App extends React.Component {
         <div className="appContainer container">
           <div className="characterList">
             <div className="row form-group">
-              <input type="text" className="form-control" onChange={this.updateQuery.bind(this)}
+              <input type="text" className="form-control" onChange={this.updateSearchText.bind(this)}
                      placeholder="Search"/>
             </div>
 
@@ -67,8 +43,20 @@ export default class App extends React.Component {
     );
   }
 
-  updateQuery(e) {
-    const query = e.target.value;
-    this.setState({query});
+  updateSearchText(e) {
+    this.props.searchCharacterList(e.target.value);
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    characterList: state.characterList.items,
+    isLoading: state.characterList.isLoading,
+    searchText: state.characterList.searchText
+  };
+}
+
+export default connect(mapStateToProps, {
+  fetchCharacterList,
+  searchCharacterList
+})(App);

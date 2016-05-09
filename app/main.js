@@ -4,11 +4,19 @@ import './main.scss';
 
 import React from 'react';
 import ReactDom from 'react-dom';
+import {Provider} from 'react-redux';
 
 import App from './src/components/App/App';
-
+import configureStore from './src/store/configureStore';
 
 window.React = React;
 
+const store = configureStore();
 const reactRoot = document.getElementById('react-root');
-ReactDom.render(<App/>, reactRoot);
+
+ReactDom.render(
+  <Provider store={store}>
+    <App/>
+  </Provider>
+  , reactRoot
+);
