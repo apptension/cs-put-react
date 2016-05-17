@@ -8,6 +8,7 @@ import {Provider} from 'react-redux';
 
 import App from './src/components/App/App';
 import configureStore from './src/store/configureStore';
+import DevTools from './src/components/DevTools';
 
 window.React = React;
 
@@ -16,7 +17,10 @@ const reactRoot = document.getElementById('react-root');
 
 ReactDom.render(
   <Provider store={store}>
-    <App/>
+    <div>
+      <App/>
+      <DevTools />
+    </div>
   </Provider>
   , reactRoot
 );

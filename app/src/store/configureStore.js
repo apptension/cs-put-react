@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 
 import reducers from '../reducers';
+import DevTools from '../components/DevTools';
 
 
 export default function configureStore(initialState) {
@@ -10,7 +11,8 @@ export default function configureStore(initialState) {
     reducers,
     initialState,
     compose(
-      applyMiddleware(thunk, createLogger())
+      applyMiddleware(thunk, createLogger()),
+      DevTools.instrument()
     )
   );
 }

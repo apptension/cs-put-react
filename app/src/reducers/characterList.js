@@ -17,7 +17,7 @@ export default function charactersList(state = initialState, action = null) {
       const items = action.payload;
       return Object.assign({}, state, {
         allItems: items,
-        items: items,
+        filteredItems: items,
         isLoading: false
       });
     case CHARACTERS_LIST_SEARCH:
@@ -27,7 +27,7 @@ export default function charactersList(state = initialState, action = null) {
         return !action.searchText.length || name.indexOf(searchText.toLocaleLowerCase()) !== -1;
       });
       return Object.assign({}, state, {
-        searchText, items: filteredItems
+        searchText, filteredItems
       });
     default:
       return state;
