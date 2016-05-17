@@ -10,6 +10,9 @@ var env = tasks.env;
 gulp.task('webpack', tasks.webpack(false));
 gulp.task('webpack:watch', tasks.webpack(true));
 
+gulp.task('test', tasks.karma(false));
+gulp.task('test:watch', tasks.karma(true));
+
 gulp.task('clean', tasks.clean);
 
 gulp.task('browser-sync', tasks.browserSync);
